@@ -27,7 +27,7 @@ class ElementSet {
         removeSet = addToSet(set: removeSet, value: value, timestamp: timestamp)
     }
     
-    func converge() -> [Element] {
+    func converged() -> [Element] {
         var elements = [Element]()
         for element in addSet {
             if let index = ElementSet.findElementIndexIn(set: removeSet, value: element.value) {
@@ -63,7 +63,7 @@ class ElementSet {
 
 // MARK: Class Methods
 extension ElementSet {
-    static func merge(_ elementSets: [ElementSet]) -> ElementSet {
+    static func merged(_ elementSets: [ElementSet]) -> ElementSet {
         var unifiedAddSet = [Element]()
         var unifiedRemoveSet = [Element]()
         

@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     }
     
     func formatElementsForDisplay(_ element: ElementSet) -> String {
-        let numbers = element.converge().map { "\($0.value)" }
+        let numbers = element.converged().map { "\($0.value)" }
         let str = numbers.joined(separator: ", ")
         return str
     }
@@ -54,7 +54,7 @@ extension ViewController: CollectionViewCellDelegate {
         if let index = items.index(where: { $0 === elementSet }) {
             items[index] = elementSet!
             collectionView.reloadData()
-            let merged = ElementSet.merge(items)
+            let merged = ElementSet.merged(items)
             let str = formatElementsForDisplay(merged)
             finalElements.text = str
         }
