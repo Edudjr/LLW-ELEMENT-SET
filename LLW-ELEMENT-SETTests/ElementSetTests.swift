@@ -127,7 +127,7 @@ class ElementSetTests: XCTestCase {
         replica.add(1, timestamp: Date())
         replica.add(2, timestamp: Date())
         
-        let converged = replica.converge()
+        let converged = replica.converged()
         
         XCTAssertEqual(converged.count, 2)
         XCTAssertEqual(converged[0].value, 1)
@@ -141,7 +141,7 @@ class ElementSetTests: XCTestCase {
         replica.add(1, timestamp: Date())
         replica.add(2, timestamp: Date())
         
-        let converged = replica.converge()
+        let converged = replica.converged()
         
         XCTAssertEqual(converged.count, 2)
         XCTAssertEqual(converged[0].value, 1)
@@ -154,7 +154,7 @@ class ElementSetTests: XCTestCase {
         replica.add(2, timestamp: Date())
         replica.remove(1, timestamp: Date())
         
-        let converged = replica.converge()
+        let converged = replica.converged()
         
         XCTAssertEqual(converged.count, 1)
         XCTAssertEqual(converged[0].value, 2)
@@ -167,7 +167,7 @@ class ElementSetTests: XCTestCase {
         replica.remove(1, timestamp: Date())
         replica.remove(2, timestamp: Date())
         
-        let converged = replica.converge()
+        let converged = replica.converged()
         
         XCTAssertEqual(converged.count, 0)
     }
@@ -179,8 +179,8 @@ class ElementSetTests: XCTestCase {
         replica1.add(1, timestamp: Date())
         replica2.add(2, timestamp: Date())
 
-        let merged = ElementSet.merge([replica1, replica2])
-        let converged = merged.converge()
+        let merged = ElementSet.merged([replica1, replica2])
+        let converged = merged.converged()
 
         XCTAssertEqual(merged.addSet.count, 2)
         XCTAssertEqual(merged.removeSet.count, 0)
@@ -201,8 +201,8 @@ class ElementSetTests: XCTestCase {
         replica2.add(2, timestamp: Date())
         replica2.remove(1, timestamp: Date())
         
-        let merged = ElementSet.merge([replica1, replica2])
-        let converged = merged.converge()
+        let merged = ElementSet.merged([replica1, replica2])
+        let converged = merged.converged()
         
         XCTAssertEqual(merged.addSet.count, 2)
         XCTAssertEqual(merged.removeSet.count, 1)
@@ -222,8 +222,8 @@ class ElementSetTests: XCTestCase {
         replica1.add(1, timestamp: Date())
         replica2.add(1, timestamp: Date())
         
-        let merged = ElementSet.merge([replica1, replica2])
-        let converged = merged.converge()
+        let merged = ElementSet.merged([replica1, replica2])
+        let converged = merged.converged()
         
         XCTAssertEqual(merged.addSet.count, 1)
         XCTAssertEqual(merged.removeSet.count, 0)
@@ -241,8 +241,8 @@ class ElementSetTests: XCTestCase {
         replica1.remove(1, timestamp: Date())
         replica2.remove(1, timestamp: Date())
         
-        let merged = ElementSet.merge([replica1, replica2])
-        let converged = merged.converge()
+        let merged = ElementSet.merged([replica1, replica2])
+        let converged = merged.converged()
         
         XCTAssertEqual(merged.addSet.count, 0)
         XCTAssertEqual(merged.removeSet.count, 1)
@@ -260,8 +260,8 @@ class ElementSetTests: XCTestCase {
         replica1.add(1, timestamp: Date())
         replica2.add(2, timestamp: Date())
         
-        let merged = ElementSet.merge([replica1, replica2])
-        let converged = merged.converge()
+        let merged = ElementSet.merged([replica1, replica2])
+        let converged = merged.converged()
         
         XCTAssertEqual(merged.addSet.count, 2)
         XCTAssertEqual(merged.removeSet.count, 2)
