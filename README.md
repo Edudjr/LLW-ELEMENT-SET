@@ -1,4 +1,4 @@
-# LLW-ELEMENT-SET
+# LWW-ELEMENT-SET
 
 
 This is an implementation for a Last-Writer-Wins Conflict-free Replicated Datatype:
